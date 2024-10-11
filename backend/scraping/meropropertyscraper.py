@@ -7,8 +7,6 @@ with open("data/meroProperty.html", "r") as file:
 
 # Base URL (if needed to form complete URLs)
 base_url = "https://meroproperty.com/"
-
-
     
 def extractDataFromDiv (property_div):
     # Extract the image link
@@ -31,6 +29,8 @@ def extractDataFromDiv (property_div):
     price_tag = price_div.find("a")
     price = price_tag.get_text(strip=True)
     price_numeric = utils.price_parser(price) if price else None
+    
+    
 
     # Print the extracted data
     return {
@@ -41,14 +41,14 @@ def extractDataFromDiv (property_div):
             'price': price_numeric
             } 
 
-dataObjectArray = []
+def scrapeData():
+    dataObjectArray = []
+    avail_property_divs = soup.find_all('div', class_='avail-property')
+    #Loop through each property div and extract data
+    for div in avail_property_divs:
+        data = extractDataFromDiv(div)
+        dataObjectArray.append(data)
+        
+    return dataObjectArray
 
-#Find all available-property divs - for now only one div
-avail_property_divs = soup.find_all('div', class_='avail-property')
-
-#Loop through each property div and extract data
-for div in avail_property_divs:
-    data = extractDataFromDiv(div)
-    dataObjectArray.append(data)
-
-print(dataObjectArray)
+    

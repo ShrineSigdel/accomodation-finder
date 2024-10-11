@@ -1,10 +1,5 @@
 import re
 
-
-        
-        
-        
-
 def price_parser(price):
     try:
         # Use regex to extract only the numeric part, ignoring any text like 'Rs' or '/Month'
@@ -13,5 +8,6 @@ def price_parser(price):
         return int(numeric_price.replace(",", ""))
     except (AttributeError, ValueError):
         return None
+
 
 

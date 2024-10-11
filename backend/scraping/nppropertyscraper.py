@@ -39,20 +39,18 @@ def extractDataFromDiv( div):
             'address': address, 
             'price': price_numeric
             } 
-    
-dataObjectArray = []
 
-#Find all available-property divs - for now only one div
-item_listing_divs = soup.find_all('div', class_='item-listing-wrap')
-
-#Loop through each property div and extract data
-for div in item_listing_divs:
-    data = extractDataFromDiv(div)
-    dataObjectArray.append(data)
-
-print(dataObjectArray)
-
-
+def scrapeData():
+        
+    dataObjectArray = []
+    #Find all available-property divs - for now only one div
+    item_listing_divs = soup.find_all('div', class_='item-listing-wrap')
+    #Loop through each property div and extract data
+    for div in item_listing_divs:
+        data = extractDataFromDiv(div)
+        dataObjectArray.append(data)
+        
+    return dataObjectArray
 
 
         
