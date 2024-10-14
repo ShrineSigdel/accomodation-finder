@@ -4,13 +4,15 @@ const express = require('express')
 const { connectDB } = require('./database/dbConnect')
 const bodyParser = require('body-parser')
 const listingsRoutes = require('./routes/listings');
-
+const cors = require('cors')
 
 const app = express();
 
 //Middleware
 app.use(bodyParser.json());
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 
 //connect to mongodb
 connectDB();

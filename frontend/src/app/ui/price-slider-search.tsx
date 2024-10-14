@@ -5,10 +5,12 @@ import { Slider } from "@/components/ui/slider"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function PriceSliderSearch() {
     const [price, setPrice] = React.useState([1000])
     const [isSearching, setIsSearching] = React.useState(false)
+    const router = useRouter()
 
     const formatPrice = (value: number) => {
         return new Intl.NumberFormat('en-IN', {
@@ -21,8 +23,7 @@ export default function PriceSliderSearch() {
     const handleSearch = async () => {
         setIsSearching(true)
         // Simulating an API call
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        console.log(`Searching for items priced at or below ${formatPrice(price[0])}`)
+        router.push(`/listings?filter=${price[0]}`);
         setIsSearching(false)
         // Here you would typically make an API call or update your app's state
     }

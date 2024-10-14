@@ -1,24 +1,20 @@
-    import Header from "./ui/header"
-    import HeroCarousel from "./ui/hero-carousel"
-    import PriceSliderSearch from "./ui/price-slider-search"
-    const page = () => {
-        return (
+import HeroCarousel from "./ui/hero-carousel"
+import HowItWorks from "./ui/how-it-works"
+import PriceSliderSearch from "./ui/price-slider-search"
 
-            <div>
-                <Header />
-                <main className="container mx-auto px-6 sm:px-8 md:px-16 lg:px-32 py-8">
+const page = () => {
+    return (
 
-                <PriceSliderSearch />
-                    <section className="py-4 md:py-8 flex justify-center">
-                        <HeroCarousel />
-                    </section>
+        <div>
+            <PriceSliderSearch />
+            <section className="py-4 md:py-8 flex justify-center">
+                <HeroCarousel />
+            </section>
 
-                   
-                </main>
+            <HowItWorks />
 
-            </div>
+        </div>
+    )
+}
 
-        )
-    }
-
-    export default page
+export default page

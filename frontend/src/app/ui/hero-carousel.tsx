@@ -10,36 +10,36 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Button } from "@/components/ui/button"
 
 // Define the structure for carousel items
 interface CarouselItemData {
     imageSrc: string
     text: string
-    buttonText: string
-    buttonLink: string
 }
 
 // Sample carousel items
 const carouselItems: CarouselItemData[] = [
     {
-        imageSrc: "/placeholder.svg?height=600&width=1200",
-        text: "Discover the beauty of nature",
-        buttonText: "Explore Now",
-        buttonLink: "/nature",
+        imageSrc: "/images/houseimg1 (1).png",
+        text: "Discover the rent of your choice",
     },
     {
-        imageSrc: "/placeholder.svg?height=600&width=1200",
-        text: "Experience urban adventures",
-        buttonText: "Plan Your Trip",
-        buttonLink: "/urban",
+        imageSrc: "/images/houseimg2 (1).jpg",
+        text: "Choose from a wide range of options",
     },
     {
-        imageSrc: "/placeholder.svg?height=600&width=1200",
+        imageSrc: "/images/houseimg3 (1).jpg",
+        text: "From your favorite websites",
+    },
+    {
+        imageSrc: "/images/houseimg4 (1).png",
+        text: "Track their prices",
+    },
+    {
+        imageSrc: "/images/houseimg5 (1).png",
         text: "Relax in luxurious comfort",
-        buttonText: "Book Now",
-        buttonLink: "/luxury",
     },
+
 ]
 
 export default function HeroCarousel() {
@@ -83,7 +83,7 @@ export default function HeroCarousel() {
                                     <Image
                                         src={item.imageSrc}
                                         alt={`Slide ${index + 1}`}
-                                        width={1200}
+                                        width={1170}
                                         height={400}
                                         className="w-full h-[300px] sm:h-[400px] object-cover"
                                     />
@@ -91,13 +91,6 @@ export default function HeroCarousel() {
                                         <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                                             {item.text}
                                         </h2>
-                                        <Button
-                                            variant="outline"
-                                            size="lg"
-                                            className="text-white border-white hover:bg-white hover:text-black transition-colors duration-300"
-                                        >
-                                            {item.buttonText}
-                                        </Button>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -106,8 +99,6 @@ export default function HeroCarousel() {
                 ))}
             </CarouselContent>
 
-            <CarouselPrevious className="left-4" onClick={goToPreviousSlide} />
-            <CarouselNext className="right-4" onClick={goToNextSlide} />
         </Carousel>
     )
 }
