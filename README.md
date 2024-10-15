@@ -93,9 +93,17 @@ The frontend server will run on `http://localhost:3000`.
 
 Below are screenshots of the application showcasing the user interface and functionality.
 
-![Main Page](frontend/public/screenshots/main.png)
+## Screenshots
 
+Below are screenshots of the application showcasing the user interface and functionality.
+
+### Main Page
+![Main Page](frontend/public/screenshots/main.png)
+*The main page displays a unified list of rental properties aggregated from multiple websites, allowing users to easily browse through available listings.*
+
+### Tracking Favorite Listings
 ![Tracking Favorite Listings](frontend/public/screenshots/track.png)
+*Users can track their favorite listings, making it easier to revisit and compare properties they are interested in.*
 
 
 
