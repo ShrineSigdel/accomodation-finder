@@ -95,7 +95,7 @@ Below are screenshots of the application showcasing the user interface and funct
 
 ![Main Page](frontend/public/screenshots/main.png)
 
-![Tracking Fav. Listings](frontend/public/screenshots/track.png)
+![Tracking Favorite Listings](frontend/public/screenshots/track.png)
 
 
 
