@@ -4,6 +4,7 @@ const express = require('express')
 const { connectDB } = require('./database/dbConnect')
 const bodyParser = require('body-parser')
 const listingsRoutes = require('./routes/listings');
+const selectionRoutes = require('./routes/selection')
 const cors = require('cors')
 
 const app = express();
@@ -19,6 +20,7 @@ connectDB();
 
 // Use the listings routes 
 app.use('/api/listings', listingsRoutes)
+app.use('api/selections', selectionRoutes)
 
 //Start Express Server
 const PORT = process.env.PORT || 5000;
