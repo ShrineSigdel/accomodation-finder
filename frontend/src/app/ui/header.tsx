@@ -25,7 +25,7 @@ export default function Header() {
             <nav className="hidden md:block">
               <ul className="flex space-x-4">
                 <li><Link href="/" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</Link></li>
-                <li><Link href="/" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Selections</Link></li>
+                <li><Link href="/selections" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Selections</Link></li>
                 <li><Link href="#footer" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Contact</Link></li>
               </ul>
             </nav>
@@ -41,13 +41,13 @@ export default function Header() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link href="/" className="hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Home</Link>
-              <Link href="/" className="hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Selections</Link>
+              <Link href="/selections" className="hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Selections</Link>
               <Link href="#footer" className="hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Contact</Link>
             </div>
           </div>
         )}
       </header>
-      <div className="h-16"></div> {/* Spacer to prevent content from being hidden under the fixed header */}
+      <div className="h-16"></div> 
     </>
   )
 }

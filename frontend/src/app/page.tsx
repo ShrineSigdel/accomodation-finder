@@ -1,3 +1,4 @@
+'use client'
 import HeroCarousel from "./ui/hero-carousel"
 import HowItWorks from "./ui/how-it-works"
 import PriceSliderSearch from "./ui/price-slider-search"

@@ -1,69 +1,71 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { Listing } from '../types';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { addToSelection } from '../../utils/api'
-import { Listing } from "../types";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from '@/hooks/use-toast';
 
-const ListingsPage: React.FC = () => {
-
-    const searchParams = useSearchParams();
-    const priceLimit = searchParams.get('filter');
-    const [listings, setListings] = useState<Listing[]>([]);
-    const [loading, setLoading] = useState(true);
+const SelectionsPage = () => {
+    const [selections, setSelections] = useState<Listing[]>([]);
+    const [loading, setLoading] = useState(true)
     const { toast } = useToast()
 
-    // Function to handle adding a listing to the selection
-    const handleAddToSelection = async (id: string) => {
+    //Handles the removal of a selection by its ID.
+    const handleRemoveSelection = async (_id: string) => {
         try {
-            await addToSelection(id)
-            toast({
-                title: "Added to Selections",
-                description: "This listing has been added to selections."
+            const response = await fetch(`http://localhost:5000/api/selections/${_id}`, {
+                method: 'DELETE',
             })
-        } catch (err) {
-            console.log(err)
+            if (response.ok) {
+                setSelections(prevListing => prevListing.filter(listing => listing._id !== _id))
+                toast({
+                    variant: "destructive",
+                    title: "Removed from Selections",
+                    description: "This listing has been removed from selection"
+                })
+            }
+            else {
+                console.error("Failed to remove selection")
+            }
+        }
+        catch (error) {
+            console.error("Error removing selection:", error);
         }
     }
 
-    //Fetches listings from the API and filters them based on the provided price limit.
+    // Fetch selections from the API when the component mounts
     useEffect(() => {
-        const fetchListings = async () => {
+        const fetchSelections = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/listings?filter=${priceLimit}`);
-                const data = await response.json();
-                const filteredListings = data.filter((listing: Listing) => {
-                    return priceLimit ? listing.price <= parseInt(priceLimit) : true;
-                });
-                setListings(filteredListings);
+                const res = await fetch('http://localhost:5000/api/selections');
+                const data = await res.json();
+                setSelections(data)
             } catch (error) {
-                console.error("Error fetching listings:", error);
+                console.error('Error fetching selections:', error);
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         };
-        fetchListings();
+        fetchSelections();
     }, []);
+
+
+
 
     if (loading) {
         return (<div className="text-center text-blue-600 text-large">
             Loading...
         </div>)
     }
-
     return (
         <div className="min-h-screen bg-white py-12">
             <div className="container mx-auto px-4">
-                <h1 className="text-4xl font-semibold text-center mb-8 text-blue-500">Kathmandu Rental Listings</h1>
+                <h1 className="text-4xl font-semibold text-center mb-8 text-blue-500">Your Selections</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {listings.length === 0 ? (
-                        <div className='text-center text-lg text-blue-500'>No listings has been found under this price</div>
-                    ) : (
-                        listings.map((listing) => (
+                    {
+                        selections.length === 0 ? (<div className='text-center text-lg text-blue-500'>No selections has been found. </div>) : (selections.map((listing) => (
                             <Card
                                 key={listing._id}
                                 className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
@@ -94,22 +96,22 @@ const ListingsPage: React.FC = () => {
                                         </div>
                                         <div className="w-full sm:w-1/2">
                                             <Button
-                                                className="w-full bg-blue-600 text-white border border-white hover:bg-white hover:text-blue-500 hover:border-blue-600 transition-colors duration-300"
-                                                onClick={() => handleAddToSelection(listing._id)}
+                                                className="w-full"
+                                                variant="destructive"
+                                                onClick={() => handleRemoveSelection(listing._id)}
                                             >
-                                                Track
+                                                Remove
                                             </Button>
                                         </div>
                                     </div>
                                 </CardFooter>
                             </Card>
-                        ))
-                    )}
-
+                        )))
+                    }
                 </div>
             </div>
         </div>
     )
 };
 
-export default ListingsPage;
+export default SelectionsPage;

@@ -22,10 +22,9 @@ export default function PriceSliderSearch() {
 
     const handleSearch = async () => {
         setIsSearching(true)
-        // Simulating an API call
         router.push(`/listings?filter=${price[0]}`);
         setIsSearching(false)
-        // Here you would typically make an API call or update your app's state
+
     }
 
     return (
@@ -36,7 +35,7 @@ export default function PriceSliderSearch() {
             <CardContent>
                 <div className="space-y-6">
                     <Slider
-                        defaultValue={[1000]}
+                        defaultValue={[10000]}
                         max={100000}
                         min={1000}
                         step={1000}

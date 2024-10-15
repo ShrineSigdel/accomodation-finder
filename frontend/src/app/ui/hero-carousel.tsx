@@ -7,11 +7,8 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel"
 
-// Define the structure for carousel items
 interface CarouselItemData {
     imageSrc: string
     text: string
@@ -45,13 +42,13 @@ const carouselItems: CarouselItemData[] = [
 export default function HeroCarousel() {
     const [currentIndex, setCurrentIndex] = React.useState(0)
 
-    // Autoplay: Move to the next slide every 5 seconds
+   
     React.useEffect(() => {
         const interval = setInterval(() => {
             goToNextSlide()
-        }, 3000) // 5000ms = 5 seconds
+        }, 3000)
 
-        return () => clearInterval(interval) // Clear the interval on unmount
+        return () => clearInterval(interval) 
     }, [currentIndex])
 
     const goToNextSlide = () => {
