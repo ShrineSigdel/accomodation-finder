@@ -1,4 +1,4 @@
-`# Accommodation Finder
+# Accommodation Finder
 
 **Accommodation Finder** is a web application that aggregates rental listings from various property websites and displays them in one place, allowing users to easily view and track rental listings. Currently, it scrapes data from two websites: **meroproperty.com** and **nepalpropertybazaar.com** using Python's **Beautiful Soup** for web scraping.
 
