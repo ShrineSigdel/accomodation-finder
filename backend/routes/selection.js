@@ -9,4 +9,4 @@ router.post('/add', addToSelection);
 //Route to retrieve selections
 router.get('/', getSelection)
 
-module.exports = { router }
+module.exports = router
