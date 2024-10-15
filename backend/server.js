@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express')
 const { connectDB } = require('./database/dbConnect')
 const bodyParser = require('body-parser')
@@ -20,7 +18,7 @@ connectDB();
 
 // Use the listings routes 
 app.use('/api/listings', listingsRoutes)
-app.use('api/selections', selectionRoutes)
+app.use('/api/selections', selectionRoutes)
 
 //Start Express Server
 const PORT = process.env.PORT || 5000;

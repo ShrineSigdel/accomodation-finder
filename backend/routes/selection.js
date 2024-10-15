@@ -1,12 +1,15 @@
 const { Router } = require('express')
-const { addToSelection, getSelection } = require('../controllers/selectionController')
+const { addToSelection, getSelection, deleteSelection } = require('../controllers/selectionController')
 
 const router = Router()
 
-//Route to add  a card to selection
+// Route to add a selection
 router.post('/add', addToSelection);
 
-//Route to retrieve selections
+// Route to get all selections
 router.get('/', getSelection)
+
+// Route to delete a selection by cardId
+router.delete('/:cardId', deleteSelection)
 
 module.exports = router
